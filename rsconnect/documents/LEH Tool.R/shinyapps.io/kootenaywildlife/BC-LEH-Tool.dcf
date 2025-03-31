@@ -1,0 +1,13 @@
+name: BC-LEH-Tool
+title: BC-LEH-Tool
+username: kootenaywildlife
+account: kootenaywildlife
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12291684
+bundleId: 9491704
+url: https://kootenaywildlife.shinyapps.io/BC-LEH-Tool/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: LEH Survey Estimates 1984 to preliminary 2023.xlsx|LEH_Labels.R|LEH_WILD Export.xlsx|MajorWaters_2Mil.rds|MU Labels_Manual.xlsx|ProvincialWMUs.rds|WMU_LabelPoints.rds
