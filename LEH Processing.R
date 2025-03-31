@@ -1,3 +1,17 @@
+# Copyright 2019 Province of British Columbia
+# 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at 
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 Report <- read_excel("Q:/Biometrics Unit/Wildlife/LEH/LEH Draw Hunt Code Report - 2002 to fall 2024.xlsx")
 Estimates <- read_excel("Q:/Biometrics Unit/Wildlife/Survey/Estimates/LEH Survey Estimates 1984 to final 2023.xlsx")
 setwd("Z:/Terrestrial/Species/1 - Multi-Species/R_Projects/LEH Tool/Tool")
@@ -135,24 +149,24 @@ writexl::write_xlsx(Wild.Out, "WILD LEH Table - For Tool.xlsx")
 
 
 #################### Processing Linework ###############
-library(sf)
-crs <- "+proj=longlat +datum=WGS84"
-leh <- st_read("W:/wlap/nel/Workarea/lvanderv/LEH_AllSpecies_May24_2024.shp") %>%
-  st_transform(crs) 
-tt <- unique(leh$LTD_ENTRY_)[]
-for(i in 1:length(tt)){
-  temp <- unique(Wild$Species[tolower(Wild$Species) == tolower(leh$LTD_ENTRY_[leh$LTD_ENTRY_ == tt[i]])])
-  if(length(temp) == 1)  leh$Species[leh$LTD_ENTRY_ == tt[i]] <- temp
-}
-leh <- subset(leh, Species != "NA") %>%
-  subset(!is.na(Species))
-
-for(i in 1:nrow(leh)){
-  tt <- strsplit(leh$LEH_HUNT_A[i], split = "")[[1]]
-  if(length(tt) == 4) leh$LEH_HUNT_A[i] <- paste(tt[1], tt[2], tt[3], " ", tt[4], sep = "")
-  if(length(tt) == 3) leh$LEH_HUNT_A[i] <- paste(tt[1], tt[2], tt[3], sep = "")
-}
-rm(tt, i, temp)
+# library(sf)
+# crs <- "+proj=longlat +datum=WGS84"
+# leh <- st_read("W:/wlap/nel/Workarea/lvanderv/LEH_AllSpecies_May24_2024.shp") %>%
+#   st_transform(crs) 
+# tt <- unique(leh$LTD_ENTRY_)[]
+# for(i in 1:length(tt)){
+#   temp <- unique(Wild$Species[tolower(Wild$Species) == tolower(leh$LTD_ENTRY_[leh$LTD_ENTRY_ == tt[i]])])
+#   if(length(temp) == 1)  leh$Species[leh$LTD_ENTRY_ == tt[i]] <- temp
+# }
+# leh <- subset(leh, Species != "NA") %>%
+#   subset(!is.na(Species))
+# 
+# for(i in 1:nrow(leh)){
+#   tt <- strsplit(leh$LEH_HUNT_A[i], split = "")[[1]]
+#   if(length(tt) == 4) leh$LEH_HUNT_A[i] <- paste(tt[1], tt[2], tt[3], " ", tt[4], sep = "")
+#   if(length(tt) == 3) leh$LEH_HUNT_A[i] <- paste(tt[1], tt[2], tt[3], sep = "")
+# }
+# rm(tt, i, temp)
 
 
 
